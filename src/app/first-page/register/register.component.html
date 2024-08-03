@@ -1,0 +1,79 @@
+<section class="containerRegister">
+    <form [formGroup]="newUser">
+        <fieldset >
+            <legend title="Creación de Usuario"> Creación de Usuario</legend>
+            <label name="name">Nombre:</label>
+            <input type="text" formControlName="name" name="name" class="name" id="name" placeholder="Ingrese su nombre"
+            title="Ingrese su Nombre" >
+
+            @if(newUser.get("name")?.errors?.["required"] && newUser.get("name")?.dirty){
+                <p>El nombre es requerido</p>
+            }
+            <label name="lastname">Apellido:</label>
+            <input type="text" formControlName="lastname" name="lastname" class="lastname" id="lastname" placeholder="Ingrese su apellido"
+            title="Ingrese su Apellido" >
+
+            @if(newUser.get("lastname")?.errors?.["required"] && newUser.get("lastname")?.dirty){
+                <p>El apellido es requerido</p>
+            }
+            <label name="dni">DNI:</label>
+            <input type="text" formControlName="dni" name="dni" class="dni" id="dni" placeholder="Ingrese su DNI"
+            title="Igrese su DNI" >
+
+            @if(newUser.get("dni")?.errors?.["required"] && newUser.get("dni")?.dirty){
+                <p>El DNI es requerido</p>
+            }@else if(newUser.get("dni")?.errors?.["pattern"]){
+                <p>El DNI solo puede obtener números</p>
+            }
+
+            <label name="age">Edad:</label>
+            <input type="number" formControlName="age" name="age" class="age" id="age" placeholder="Ingrese su Edad"
+            title="Ingrese su edad">
+
+            @if(newUser.get("age")?.errors?.["required"]){
+                <p>La edad es requerida</p>
+            }
+
+            <label name="email">Email:</label>
+            <input type="email" formControlName="email" name="email" class="email" id="email" placeholder="Ingrese su Email"
+            title="Ingrese su Email">
+
+            @if(newUser.get("email")?.errors?.["required"] && newUser.get("email")?.dirty){
+                <p>El email es requerido</p>
+            }@else if(newUser.get("email")?.errors?.["email"]){
+                <p>Tiene que ser un email válido</p>
+            }
+
+            <label name="password">Contraseña:</label>
+            <input type="password" formControlName="password" name="password" class="password" placeholder="Ingrese su Contraseña"
+            title="Ingrese su contraseña">
+
+            @if(newUser.get("password")?.errors?.["required"] && newUser.get("password")?.dirty){
+                <p>La contraseña es requerida</p>
+            }
+
+            <input value="Registrarse" type="submit" class="btn" alt="Registrarse" title="Registrarse" [disabled]="newUser.invalid" (click)="register()">
+
+        </fieldset>
+    </form>
+</section>
+<p>{{otro}}</p>
+
+<section class="good_message">
+    @if(message != ""  && message != "Lo sentimos ocurrio un error"){
+        <p>{{message}}</p>
+
+    }
+    
+</section>
+
+<section class="err_message">
+    <ul>
+        @for(error of errorsMessages; track error.id){
+            <li>{{error}}</li>
+        }
+    </ul>
+    
+</section>
+
+<p>{{message}}</p>

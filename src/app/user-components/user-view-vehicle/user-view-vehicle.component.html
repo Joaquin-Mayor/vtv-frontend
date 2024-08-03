@@ -1,0 +1,21 @@
+<h2>Lista de Vehiculos</h2>
+
+<ul>
+    @if(vehicles.length !=0){
+        @for(vehicle of vehicles; track vehicle){
+            <li>
+                <p>Tipo: {{vehicle.getType}}</p>
+                <br>
+                <p>Patente: {{vehicle.getPatent}}</p>
+                <br>
+                <p>Kilometros: {{vehicle.getKilometres}}</p>
+                <br>
+                <p>Modelo: {{vehicle.getModel}}</p>
+            </li>
+        }
+    }@else{
+        <p>Usted no cuenta con ningun vehiculo cargado en el sistema.</p>
+    }
+    
+    
+</ul>

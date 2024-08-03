@@ -1,0 +1,37 @@
+<h2>Inscripción de Vehículo</h2>
+
+<form [formGroup]="newVehicle">
+    <label name="type" >Tipo:</label>
+    <select name="type" id="automotores" formControlName="type">
+        <option value="moto">Moto</option>
+        <option value="auto">Auto</option>
+        <option value="cambioneta">Camioneta</option>
+        <option value="camion">Camión</option>
+    </select>
+
+    <label name="patent">Patente</label>
+    <input type="text" formControlName="patent" class="input" placeholder="Ingrese la patente su vehiculo" name="patent">
+
+    @if(newVehicle.get("patent")?.errors?.["required"] && newVehicle.get("patent")?.dirty){
+        <p>La patente es requerida</p>
+    }@else if(newVehicle.get("patent")?.errors?.["pattern"]){
+        <p>El patron ingresado no es un patrón valido</p>
+    }
+
+    <label name="kilometres">Kilometros:</label>
+    <input type="name" formControlName="kilometres" class="input" name="kilometres" placeholder="Ingrese la cantidad de kilometros de su vehiculo">
+
+    @if(newVehicle.get("kilometres")?.errors?.["required"] && newVehicle.get("kilometres")?.dirty){
+        <p>La cantidad de kilometros es requerida</p>
+    }
+
+    <label name="model">Modelo</label>
+    <input type="text" formControlName="model" name="model" class="input" placeholder="Ingrese el modelo de su auto">
+    
+    @if(newVehicle.get("model")?.errors?.["required"] && newVehicle.get("model")?.dirty){
+        <p>El modelo es requerido</p>
+    }
+    <input type="submit" value="Enviar" (click)="chargeVehicle()" [disabled]="newVehicle.invalid">
+</form>
+
+<p>{{message}}</p>

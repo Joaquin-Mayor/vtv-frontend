@@ -1,0 +1,35 @@
+    <h2>Logueo</h2>
+<section class="form">
+    <form [formGroup]="logueo">
+        <fieldset>
+            <label class="email">Ingrese su email.</label>
+            <input type="email" class="email" id="email" name="email" formControlName="email">
+
+            @if(logueo.get("email")?.errors?.["required"] && logueo.get("email")?.dirty){
+                <p>El email es requerido</p>
+            }@else if(logueo.get("email")?.errors?.["email"]){
+                <p>Tiene que ser un email válido</p>
+            }
+
+            <label class="password">Ingrese su contraseña.</label>
+            <input type="password" class="password" id="password" name="password" formControlName="password">
+
+            @if(logueo.get("password")?.errors?.["required"] && logueo.get("password")?.dirty){
+                <p>La contraseña es requerida</p>
+            }
+
+            <input type="submit" class="submit" id="submit" value="Ingresar" [disabled]="logueo.invalid" (click)="login()">
+        </fieldset>
+    </form>
+</section>
+
+@if(message!=""){
+    <p>{{message}}</p>
+}
+
+<button (click)="edit()">edit</button>
+<button (click)="chargeVehicle()">Cargar Vehiculo</button>
+<button (click)="viewVehicle()">Ver Vehiculos</button>
+
+
+

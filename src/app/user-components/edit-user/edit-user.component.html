@@ -1,0 +1,56 @@
+<h2>Edición de Usuario</h2>
+
+<form [formGroup]= "newUserDate" class="form">
+    <label name="name">Nombre:</label>
+    <p>{{user.getName}}</p>
+    <button (click)="btnName()">Cambiar Nombre</button>
+    @if(editName){
+        <input type="text" formControlName="name" name="name" class="edit_imp" placeholder="Ingrese su nombre">
+        <button class="edit_btn" (click)="modifyName()">Editar Nombre</button>
+    }
+
+    <label name="lastname">Apellido:</label>
+    <p>{{user.getLastname}}</p>
+    <button (click)="btnLastname()">Cambiar Apellido</button>
+    @if(editLastname){
+        <input type="text" formControlName="lastname" name="lastname" class="edit_imp" placeholder="Ingrese su apellido">
+        <button class="edit_btn" (click)="modifyLastname()">Editar Apellido</button>
+    }
+
+    <label name="age">Edad:</label>
+    <p>{{user.getAge}}</p>
+    <button (click)="btnAge()">Cambiar Edad</button>
+    @if(editAge){
+        <input type="number" formControlName="age" name="age" class="edit_imp" placeholder="Ingrese su edad actual">
+        <button class="edit_btn" (click)="modifyAge()">Editar Edad</button>
+    }
+
+
+    <label name="email">Email:</label>
+    <p>{{user.getEmail}}</p>
+    <button (click)="btnEmail()">Cambiar Email</button>
+    @if(editEmail){
+        <input type="text" formControlName="email" name="email" class="edit_imp" placeholder="Ingrese su nuevo email">
+        <button class="edit_btn" (click)="modifyEmail()">Editar Email</button>
+    }
+
+
+    <label name="password">Contraseña:</label>
+    <button (click)="btnPassword()">Cambiar Contraseña</button>
+    @if(editPassword){
+        <input type="text" formControlName="password" name="password" class="edit_imp" placeholder="Ingrese su nueva contraseña">
+        <button (click)="modifyPassword()">Editar Contraseña</button>
+    }
+
+    
+</form>
+
+<p>{{message}}</p>
+
+
+<button (click)="viewUsers()">Lista</button>
+<ul>
+    @for(u of users; track u){
+        <li>{{u.getName}}</li>
+    }
+</ul>
